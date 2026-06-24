@@ -1,0 +1,32 @@
+[env]
+PROJECT_NAME = "{{ config_root | basename }}"
+MISE_PROJECT_ROOT = "{{ config_root }}"
+
+[tools]
+node = "latest"
+pnpm = "latest"
+
+
+[tasks.setup]
+description = "Full project bootstrap: mise tools + deps"
+sources = ["package.json", "pnpm-lock.yaml"]
+run = """
+set -e
+echo "📦  Installing dependencies..."
+pnpm install
+"""
+
+[tasks.deploy]
+description = "Deploy the application"
+run = "pnpm wrangler deploy"
+
+[tasks.test]
+description = "Run tests"
+run = "echo test"
+
+[tasks.info]
+description = "Print project information"
+run = '''
+echo "Project: $PROJECT_NAME"
+'''
+
