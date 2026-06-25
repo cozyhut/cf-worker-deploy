@@ -31,5 +31,8 @@
       "version": "^11.9.0",
       "onFail": "download"
     }
+  },
+  "dependencies": {
+    "wrangler": "^4.104.0"
   }
 }
